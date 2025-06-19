@@ -1,0 +1,21 @@
+name: Python CI with pytest # Название workflow
+
+on: [push] # Запускать при событии push в любую ветку
+
+jobs: # Определение заданий
+  build-and-test: # Название задания
+    runs-on: ubuntu-latest # ОС для запуска
+
+    steps: # Шаги задания
+    - uses: actions/checkout@v4 # Шаг 1: Получить код из репозитория
+    - name: Set up Python 3.11 # Шаг 2: Установить Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install dependencies # Шаг 3: Установить зависимости
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Run pytest # Шаг 4: Запустить тесты
+      run: |
+        pytest tests/ -v # -v для подробного вывода (verbose)
