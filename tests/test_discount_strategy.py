@@ -52,4 +52,4 @@ def test_order_final_price_non_negative():
 # Тест, который ПАДАЕТ (намеренно для демонстрации Actions)
 def test_order_percentage_discount():
     order = Order(1000.0, PercentageDiscount(20.0))  # 20%
-    assert order.calculate_final_price() == 700.0  # Ожидаем 800.0, тест упадет!
+    assert order.calculate_final_price() == 800.0  # Ожидаем 800.0, тест упадет!
